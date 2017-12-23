@@ -14,7 +14,7 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 
 ![ALL ICCs](plots/Atari.all.pdf) 
 
-<object data="http://yoursite.com/the.pdf" type="application/pdf" width="700px" height="700px">
+<object data="plots/Atari.all.pdf" type="application/pdf" width="700px" height="700px">
     <embed src="plots/Atari.all.pdf">
         This browser does not support PDFs. Please download the PDF to view it: <a href="http://yoursite.com/the.pdf">Download PDF</a>.</p>
     </embed>
