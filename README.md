@@ -13,20 +13,26 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 ### Scores
 
 ![Atari Scores](plots/Atari.Scores.pdf) 
+
 ![GVGP Scores](plots/GVGP.Scores.pdf) 
 
 ### Generality
 
 ![Atari AI techniques](plots/Atari.Abgen.pdf) 
+
 ![GVGP AI techniques](plots/GVGP.Abgen.pdf) 
 
 
 ### IRT parameters: Atari 2600 Games
 
 ![ALL ICCs](plots/Atari.all.pdf) 
+
 ![ICCs 10 most difficult games](plots/Atari.diff.pdf) 
+
 ![ICCs 10 most discriminant games](plots/Atari.Disc.pdf) 
+
 ![ICCs negative discriminant games](plots/Atari.neg.pdf) 
+
 
 **Parameters**
 
@@ -78,8 +84,11 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 ## IRT parameters: GVGP Games
 
 ![ALL ICCs](plots/GVGP.all.pdf) 
+
 ![ICCs 10 most difficult games](plots/GVGP.diff.pdf) 
+
 ![ICCs 10 most discriminant games](plots/GVGP.Disc.pdf) 
+
 ![ICCs negative discriminant games](plots/GVGP.neg.pdf) 
 
 **Parameters**
