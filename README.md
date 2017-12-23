@@ -12,8 +12,8 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 
 ### IRT parameters: Atari 2600 Games
 
-![GitHub Logo](/plots/Atari.all.pdf) 
-Format: ![Alt Text](url)
+![ALL ICCs](plots/Atari.all.pdf) 
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
 
 
 |Game            | Gussng|      Dffclt|     Dscrmn| id|
