@@ -85,7 +85,7 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 
 ![ALL ICCs](plots/GVGP.all.pdf) 
 
-![ICCs 10 most difficult games](plots/GVGP.diff.pdf) 
+![ICCs 10 most difficult games](plots/GVGP.Diff.pdf) 
 
 ![ICCs 10 most discriminant games](plots/GVGP.Disc.pdf) 
 
