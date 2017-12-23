@@ -190,106 +190,119 @@ genSources.Atari.EFF <- function(){
 
 genSources.GVGP <- function(Dis = 50){
   
-  ################
-  # DERIVES SIZES AND NAMES OF AGENTS, GAMES, LEVELS, ETC.
-  ################
-  
-  Nresults <- nrow(GVGP.results)
-  # 28175
-  # 23 controllers x 49 games x 25 trials (5 times per level x 5 repetitions)
-  
-  colnames(GVGP.results) <- c("Agent", "Game", "Level", "Win/Loss", "Score", "Seconds (0 - 2000)")
-  head(GVGP.results)
-  
-  # summary(GVGP.results)
-  # plot(GVGP.results[,"Level"], GVGP.results[,"Win/Loss"])
-  # cor(GVGP.results[,"Level"], GVGP.results[,"Win/Loss"])
+  # ################
+  # # DERIVES SIZES AND NAMES OF AGENTS, GAMES, LEVELS, ETC.
+  # ################
   # 
-  # plot(GVGP.results[,"Level"], GVGP.results[,"Score"])
-  # cor(GVGP.results[,"Level"], GVGP.results[,"Score"])
+  # Nresults <- nrow(GVGP.results)
+  # # 28175
+  # # 23 controllers x 49 games x 25 trials (5 times per level x 5 repetitions)
   # 
-  # plot(GVGP.results[,"Score"], GVGP.results[,"Win/Loss"])
-  # cor(GVGP.results[,"Score"], GVGP.results[,"Win/Loss"])
-  
-  PERFORMANCE_METRIC <- "Score"
-  NORMALISE_MATRIX <- TRUE  # If true it scales the matrix so that we get variances and means that are tantamount to the correlations
-  
-  agentnames <- unique(GVGP.results[["Agent"]])
-  Nagents <- length(agentnames)
-  gamenames <- unique(GVGP.results[["Game"]])
-  Ngames <- length(gamenames)
-  levelnames <- unique(GVGP.results[["Level"]])
-  Nlevels <- length(levelnames)
-  repnames <- 1:5
-  Nreps <- length(repnames)
-  
-  gamelevelnames <- rep(0,Ngames*Nlevels)
-  count <- 1
-  for (i in 1:Ngames) {
-    for (j in 1:Nlevels) {
-      gamelevelnames[count] <- paste(gamenames[i], levelnames[j], sep=":")
-      count <- count +1
-    }  
-  }
-  gamelevelnames
-  Ngamelevels <- length(gamelevelnames)
-  
-  
-  gamelevelrepnames <- rep(0,Ngames*Nlevels*Nreps)
-  count <- 1
-  for (i in 1:Ngames) {
-    for (j in 1:Nlevels) {
-      for (k in 1:Nreps) {
-        gamelevelrepnames[count] <- paste(gamenames[i], levelnames[j], repnames[k], sep=":")
-        count <- count +1
-      }  
-    }  
-  }
-  gamelevelrepnames
-  Ngamelevelreps <- length(gamelevelrepnames)
-  
-  ################
-  # AGGREGATES REPETITIONS
-  ################
-  
-  Nresultsagg <- Nresults / Nreps
-  resultsagg <- GVGP.results[1:Nresultsagg,]
-  count <- 1
-  winsum <- 0
-  for (i in 1:Nresults) {
-    winsum <- winsum + GVGP.results[i, PERFORMANCE_METRIC]
-    #scoresum <- scoresum + results[i, "Score"]
-    #secondssum <- seconddsum + results[i, "Seconds (0 - 2000)"] 
-    if (i %% Nreps == 0) {
-      resultsagg[count,] <- GVGP.results[i,]
-      resultsagg[count, PERFORMANCE_METRIC] <- winsum/Nreps
-      winsum <- 0
-      count <- count + 1
-    }  
-  }
-
-  # Should be:
-  #resultmatrix <- matrix(results[[PERFORMANCE_METRIC]], nrow=Nagents, ncol=Ngamelevelreps, byrow=TRUE,                        dimnames = list(agentnames,gamelevelrepnames))
-  # Columns: tasks  : 49 games x 5 level x 5 level= 245*5 = 1225
-  # Rows: agents  : 23 controllers
-
-  # Should be:
-  resultmatrixagg <- matrix(resultsagg[[PERFORMANCE_METRIC]], nrow=Nagents, ncol=Ngamelevels, byrow=TRUE,
-                            dimnames = list(agentnames,gamelevelnames))
-  
-  #resultmatrixagg
-  AImethods <- rownames(resultmatrixagg)
-  # Columns: tasks  : 49 games x 5 levels = 245
-  # Rows: agents  : 23 controllers
-
-  # # We include some very small noise to avoid NAN correlation
-  # noise <- 0.0000001
-  # resultmatrixaggN <- resultmatrixagg + runif(length(resultmatrixagg),-noise,+noise)
+   colnames(GVGP.results) <- c("Agent", "Game", "Level", "Win/Loss", "Score", "Seconds (0 - 2000)")
+  # head(GVGP.results)
+  # 
+  # # summary(GVGP.results)
+  # # plot(GVGP.results[,"Level"], GVGP.results[,"Win/Loss"])
+  # # cor(GVGP.results[,"Level"], GVGP.results[,"Win/Loss"])
+  # # 
+  # # plot(GVGP.results[,"Level"], GVGP.results[,"Score"])
+  # # cor(GVGP.results[,"Level"], GVGP.results[,"Score"])
+  # # 
+  # # plot(GVGP.results[,"Score"], GVGP.results[,"Win/Loss"])
+  # # cor(GVGP.results[,"Score"], GVGP.results[,"Win/Loss"])
+  # 
+  # PERFORMANCE_METRIC <- "Score"
+  # NORMALISE_MATRIX <- TRUE  # If true it scales the matrix so that we get variances and means that are tantamount to the correlations
+  # 
+  # agentnames <- unique(GVGP.results[["Agent"]])
+  # Nagents <- length(agentnames)
+  # gamenames <- unique(GVGP.results[["Game"]])
+  # Ngames <- length(gamenames)
+  # levelnames <- unique(GVGP.results[["Level"]])
+  # Nlevels <- length(levelnames)
+  # repnames <- 1:5
+  # Nreps <- length(repnames)
+  # 
+  # gamelevelnames <- rep(0,Ngames*Nlevels)
+  # count <- 1
+  # for (i in 1:Ngames) {
+  #   for (j in 1:Nlevels) {
+  #     gamelevelnames[count] <- paste(gamenames[i], levelnames[j], sep=":")
+  #     count <- count +1
+  #   }  
+  # }
+  # gamelevelnames
+  # Ngamelevels <- length(gamelevelnames)
   # 
   # 
-  # data <- resultmatrixaggN
+  # gamelevelrepnames <- rep(0,Ngames*Nlevels*Nreps)
+  # count <- 1
+  # for (i in 1:Ngames) {
+  #   for (j in 1:Nlevels) {
+  #     for (k in 1:Nreps) {
+  #       gamelevelrepnames[count] <- paste(gamenames[i], levelnames[j], repnames[k], sep=":")
+  #       count <- count +1
+  #     }  
+  #   }  
+  # }
+  # gamelevelrepnames
+  # Ngamelevelreps <- length(gamelevelrepnames)
+  # 
+  # ################
+  # # AGGREGATES REPETITIONS
+  # ################
+  # 
+  # Nresultsagg <- Nresults / Nreps
+  # resultsagg <- GVGP.results[1:Nresultsagg,]
+  # count <- 1
+  # winsum <- 0
+  # for (i in 1:Nresults) {
+  #   winsum <- winsum + GVGP.results[i, PERFORMANCE_METRIC]
+  #   #scoresum <- scoresum + results[i, "Score"]
+  #   #secondssum <- seconddsum + results[i, "Seconds (0 - 2000)"] 
+  #   if (i %% Nreps == 0) {
+  #     resultsagg[count,] <- GVGP.results[i,]
+  #     resultsagg[count, PERFORMANCE_METRIC] <- winsum/Nreps
+  #     winsum <- 0
+  #     count <- count + 1
+  #   }  
+  # }
+  # 
+  # # Should be:
+  # #resultmatrix <- matrix(results[[PERFORMANCE_METRIC]], nrow=Nagents, ncol=Ngamelevelreps, byrow=TRUE,                        dimnames = list(agentnames,gamelevelrepnames))
+  # # Columns: tasks  : 49 games x 5 level x 5 level= 245*5 = 1225
+  # # Rows: agents  : 23 controllers
+  # 
+  # # Should be:
+  # resultmatrixagg <- matrix(resultsagg[[PERFORMANCE_METRIC]], nrow=Nagents, ncol=Ngamelevels, byrow=TRUE,
+  #                           dimnames = list(agentnames,gamelevelnames))
+  # 
+  # #resultmatrixagg
+  # AImethods <- rownames(resultmatrixagg)
+  # # Columns: tasks  : 49 games x 5 levels = 245
+  # # Rows: agents  : 23 controllers
+  # 
+  # # # We include some very small noise to avoid NAN correlation
+  # # noise <- 0.0000001
+  # # resultmatrixaggN <- resultmatrixagg + runif(length(resultmatrixagg),-noise,+noise)
+  # # 
+  # # 
+  # # data <- resultmatrixaggN
   
-  GVGP <- data.frame(resultmatrixagg)
+  # GVGP <- data.frame(resultmatrixagg)
+  
+  library(dplyr)
+  
+  GVGP.results$GameB <- paste(GVGP.results$Game,GVGP.results$Level,sep=".")
+  GVGP.results.g <- group_by(GVGP.results, Agent, GameB)
+  GVGP.results.s <- summarise(GVGP.results.g, ScoreM = mean(Score))
+  
+  t <- melt(GVGP.results.s, id.vars = c("Agent", "GameB"))
+  GVGP <- data.frame(dcast(t, Agent ~ GameB))
+  
+  rownames(GVGP) <- GVGP[,1] 
+  GVGP <- GVGP[,2:ncol(GVGP)]
+  
   saveRDS(GVGP, file= "GVGP.results.orig.rds")
  
   normaliseB <- function(x){
@@ -297,14 +310,15 @@ genSources.GVGP <- function(Dis = 50){
   }
   
   GVGP.norm <- data.frame(sapply(GVGP,normaliseB))
-  rownames(GVGP.norm) <- AImethods
+  rownames(GVGP.norm) <- rownames(GVGP)
   saveRDS(GVGP.norm, file= "GVGP.results.norm.rds")
   
   geDis <- function(x){
       ifelse(x>=median(x), 1,0)
   }
   
-  GVGP.bin <- sapply(GVGP, geDis)
+  GVGP.bin <- data.frame(sapply(GVGP, geDis))
+  rownames(GVGP.bin) <- rownames(GVGP)
   saveRDS(GVGP.bin, file= "GVGP.results.bin.rds")
   
   
@@ -375,7 +389,7 @@ estimateParm.IRT2PL.GVGP <- function(){
   GVGP.bin <- readRDS("GVGP.results.bin.rds")
   GVGP.bin.var <- GVGP.bin[,apply(GVGP.bin, 2, var, na.rm=TRUE) != 0]#remove games with variability = 0
   GVGP.bin.var <- data.frame(GVGP.bin.var)
-  #rownames(GVGP.bin.var) <- rownames(GVGP)
+  rownames(GVGP.bin.var) <- rownames(GVGP)
   
   # IRT 2PL
   fit <- tpm(GVGP.bin.var, type = "latent.trait",  IRT.param=TRUE, constraint = cbind(1:ncol(GVGP.bin.var), 1, 0))
@@ -422,7 +436,7 @@ normalise2 <- function(array, x=0,y=1){
   (array*range2) + x
 }
 
-
+abil = 
 generality.ETL.Atari <- function(clean = TRUE, abil ){
   # Original SCORES
   Atari <- readRDS("Atari.results.norm.rds")
@@ -465,6 +479,7 @@ generality.ETL.GVGP <- function(abil){
   GVGP.pnorm <- data.frame(sapply(GVGP.norm,pnorm))
   rownames(GVGP.pnorm) <- rownames(GVGP.norm)
   GVGP.pnorm.T <- data.frame(t(GVGP.pnorm))
+  GVGP.pnorm.T <- GVGP.pnorm.T[complete.cases(GVGP.pnorm.T),]
   
   # Scaled SCORES
   ResultsGVGP <- data.frame(t(sapply(GVGP.pnorm.T,range)))
@@ -574,19 +589,25 @@ scatterScores.Atari.EFF <- function(){
 scatterScores.GVGP <- function(){
   
   GVGP.melt <- readRDS("GVGP.results.scaled.melt.rds")
-  gameLabels <- str_replace(levels(GVGP.melt$Game),"(.*)\\.([1-4])","")
-  gameLabels <- str_replace(gameLabels,"\\.([0])","")
+  GVGP.melt <- GVGP.melt[complete.cases(GVGP.melt),]
+  gameLab <- str_replace(GVGP.melt$Game,"(.*)\\.([1-4])","")
+  gameLab <- str_replace(gameLab,"\\.([0])","")
+  GVGP.melt$gameLabels <- gameLab
+  
+  GVGP.melt.2 <- group_by(GVGP.melt, Game)
+  GVGP.melt.3 <- summarise(GVGP.melt.2, max = median(Score))
 
-  
-  
-  pg <- ggplot(GVGP.melt, aes(reorder(Game, Score), Score)) +
-    geom_point(aes(colour = Technique), size = 2, alpha = 0.3) + 
+  GVGP.melt$max <- rep(GVGP.melt.3$max, each = (nrow(GVGP.melt)/nrow(GVGP.melt.3)))
+  #pg <- ggplot(GVGP.melt, aes(reorder(Game, Score), Score)) +
+  pg <- ggplot(GVGP.melt, aes(Game, Score)) +
+    geom_point(aes(colour = Technique), size = 1, alpha = 0.3) + 
     #geom_hline(aes(yintercept =100), colour="#990000", linetype="dotted", size = 0.5) +
     #annotate("text", x = "Gravitar", y = 120, label = "Above Human level", color="#990000", size=2 , angle=0, fontface="bold") +
     #annotate("text", x = "Gravitar", y = 80, label = "Below Human level", color="#990000", size=2 , angle=0, fontface="bold") +
     theme_light() + 
-    xlab("Game") + ylab("Score % (Scaled)") + facet_zoom(xy = Score >-1 & Score<0.1,horizontal = T) +
-    theme(legend.position = c(0.1, 0.8),
+    xlab("Game") + ylab("Score % (Scaled)") + 
+    #facet_zoom(xy = Score >=-1 & Score <= 1, horizontal = T) +
+    theme(legend.position = c(0.82, 0.1),
           legend.text = element_text(size=6),
           legend.title = element_text(size=7),
           legend.key.size =  unit(0.07, "in"),
@@ -595,7 +616,8 @@ scatterScores.GVGP <- function(){
           panel.grid.minor = element_blank(),
           panel.border = element_blank()) + 
     scale_color_discrete("AI Technique") +
-    scale_x_discrete(labels = gameLabels) 
+    scale_x_discrete(labels = gameLabels) + guides(colour=guide_legend(ncol=6))
+    #scale_x_discrete(labels = GVGP.melt[order(GVGP.melt$gameLabels, GVGP.melt$max),])
   
   # pb <- ggplot_build(plot1)
   # pb$data[[3]][1, 'alpha'] <- 0
@@ -615,8 +637,9 @@ scatterScores.GVGP <- function(){
 plotICC.most.Atari <- function(params,abil, Atari.T.bin.var, howMany = 6, legpos = c(0.15, 0.25)) {
   
   params <- data.frame(params)
+  params.filter <- filter(params, Dscrmn >=0)
   
-  mostDiff <- params[order(-params$Dffclt),"id"][1:howMany]
+  mostDiff <- params.filter[order(-params.filter$Dffclt),"id"][1:howMany]
   mostDisc <- params[order(-params$Dscrmn),"id"][1:howMany]
   negDisc <- which(params$Dscrmn<0)
   
@@ -653,8 +676,9 @@ plotICC.most.Atari <- function(params,abil, Atari.T.bin.var, howMany = 6, legpos
 plotICC.most.GVGP <- function(params, abil, GVGP.bin.var, howMany = 6, legpos = c(0.15, 0.25)){
   
   params <- data.frame(params)
+  params.filter <- filter(params, Dscrmn >=0)
   
-  mostDiff <- params[order(-params$Dffclt),"id"][1:howMany]
+  mostDiff <- params.filter[order(-params.filter$Dffclt),"id"][1:howMany]
   mostDisc <- params[order(-params$Dscrmn),"id"][1:howMany]
   negDisc <- which(params$Dscrmn<0)
   
@@ -835,8 +859,7 @@ plotICC <- function (ind_game, resp, params, abil){
 ## Plot Generality (abil & generality)
 ##############################################################################
 
-
-#Results = ResultsAtari; data.var = Atari.Variability
+Results = ResultsGVGP; abil = abil.GVGP; data.var = GVGP.Variability
 plot.GenAb <- function(Results, abil, data.var, howMany = 6, isAtari = TRUE, LM = FALSE){
   
   # ABILITY PLOT
@@ -858,7 +881,7 @@ plot.GenAb <- function(Results, abil, data.var, howMany = 6, isAtari = TRUE, LM 
           axis.text.x = element_text(angle = 80, hjust = 0),
           axis.title.x = ) +
     #legend.direction = "vertical", 
-    ylab("Ability") + xlab("") + scale_x_discrete(position = "top")  + ylim(c(-2.5,3))
+    ylab("Ability") + xlab("") + scale_x_discrete(position = "top")  + ylim(c(-3,3))
   
   # GENERALITY PLOT
   

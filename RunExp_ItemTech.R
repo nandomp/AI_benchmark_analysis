@@ -1,5 +1,4 @@
 source("AIbenchmark_analysis.R")
-
 ###############
 #### Atari ####
 ###############
@@ -13,16 +12,17 @@ stuff.Atari <- estimateParm.IRT2PL.Atari()
 abil.Atari <- stuff.Atari[[1]]
 params.Atari <- stuff.Atari[[2]]
 Atari.Variability <- stuff.Atari[[3]]
-plotICC.most.Atari(params.Atari, abil.Atari, Atari.Variability,10, c(0.15, 0.25)) # Dif/Disc c(0.15, 0.35), Neg c(0.15, 0.15)
+plotICC.most.Atari(params.Atari, abil.Atari, Atari.Variability,10, c(0.15, 0.15)) # Dif/Disc c(0.15, 0.35), Neg c(0.15, 0.15)
 
 # Generality (TECHNIQUES)
-ResultsAtari <- generality.ETL.Atari(TRUE, abil)
-plot.GenAb(ResultsAtari, abil.Atari, Atari.Variability, howMany = 10, Atari = TRUE, LM = FALSE)
+ResultsAtari <- generality.ETL.Atari(TRUE, abil.Atari)
+plot.GenAb(ResultsAtari, abil.Atari, Atari.Variability, howMany = 10, isAtari = TRUE, LM = FALSE)
 
 
 ##############
 #### GVGP ####
 ##############
+source("AIbenchmark_analysis.R")
 
 ## SOURCES
 genSources.GVGP() # Generate sources
