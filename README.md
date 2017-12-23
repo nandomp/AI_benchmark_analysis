@@ -1,4 +1,4 @@
-# AI_benchmark_analysis
+# AI benchmark analysis
 Analysing AI benchmark performance: generality, ability, difficulty and discrimination
 
 ## Code
@@ -11,6 +11,10 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 ## Analysis
 
 ### IRT parameters: Atari 2600 Games
+
+![GitHub Logo](/plots/Atari.all.pdf) 
+Format: ![Alt Text](url)
+
 
 |Game            | Gussng|      Dffclt|     Dscrmn| id|
 |:---------------|------:|-----------:|----------:|--:|
