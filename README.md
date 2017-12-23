@@ -10,17 +10,25 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 
 ## Analysis
 
+### Scores
+
+![Atari Scores](plots/Atari.Scores.pdf) 
+![GVGP Scores](plots/GVGP.Scores.pdf) 
+
+### Generality
+
+![Atari AI techniques](plots/Atari.Abgen.pdf) 
+![GVGP AI techniques](plots/GVGP.Abgen.pdf) 
+
+
 ### IRT parameters: Atari 2600 Games
 
 ![ALL ICCs](plots/Atari.all.pdf) 
+![ICCs 10 most difficult games](plots/Atari.diff.pdf) 
+![ICCs 10 most discriminant games](plots/Atari.Disc.pdf) 
+![ICCs negative discriminant games](plots/Atari.neg.pdf) 
 
-[embed]plots/Atari.all.pdf[/embed]
-
-<object data="plots/Atari.all.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="plots/Atari.all.pdf">
-        This browser does not support PDFs. Please download the PDF to view it: <a href="plots/Atari.all.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+**Parameters**
 
 
 |Game            | Gussng|      Dffclt|     Dscrmn| id|
@@ -69,6 +77,12 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 
 ## IRT parameters: GVGP Games
 
+![ALL ICCs](plots/GVGP.all.pdf) 
+![ICCs 10 most difficult games](plots/GVGP.diff.pdf) 
+![ICCs 10 most discriminant games](plots/GVGP.Disc.pdf) 
+![ICCs negative discriminant games](plots/GVGP.neg.pdf) 
+
+**Parameters**
 
 |Game.Level         | Gussng|      Dffclt|      Dscrmn|  id|
 |:------------------|------:|-----------:|-----------:|---:|
@@ -309,3 +323,7 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 |zenpuzzle.2        |      0|  -0.2925847|   0.5703631| 235|
 |zenpuzzle.3        |      0|  -0.2891768|   0.5942216| 236|
 |zenpuzzle.4        |      0|  -0.2761978|   0.8807376| 237|
+
+
+
+
