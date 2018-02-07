@@ -3,18 +3,12 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 
 Whenever we confront AI systems with AI problems we are usually interested in the **performance** of the systems and its relation to the **hardness** of the problems. This is a monolithic, usually simplistic, way of looking at results. More dimensions other than performance, some of them latent, could give us a better characterisation of how a set of AI systems behave for a set of AI problems. Here we analyse two indicators on the side of the AI problems, difficulty and discrimination, and two indicators on the side of the AI systems, ability and generality.
 
-## Code
-
-- **./data/** Data (csv & rds files) used (Atari and GVGP scores)
-- **./plots/** Publication plots
-- **AIbenchmark_analysis.R** Complete functionality (ETL processes, IRT 2PL param estimation, generality estimation, publication plots, ...)
-- **RunExp_ItemTech.R** Run all the experiments
 
 ## Analysis
 
 We analyse the behaviour of several learning techniques for two of the most popular general-purpose AI benchmarks in the recent years: the **Arcade Learning Environment**, based on the Atari 2600 games and the **General Video Game AI Competition**. We use Item Response Theory, and logistic models in particular, to create item characteristic curves to determine which games in the benchmark are more **difficult** but also more **discriminating**, as well as the **ability** or proficiency of each learning technique addresing the games. We complement them with a new metric of generality.
 
-## [DATA] 
+## Data
 
 **The Arcade Learning Environment** [ALE](https://github.com/mgbellemare/Arcade-Learning-Environment)
 
@@ -27,6 +21,15 @@ One benchmark that has become particularly popular in the past years is the Arca
 Another interesting initiative is the general video game AI (GVGAI) competition \cite{perez20162014}, a benchmark which comprises a large number of real-time 2D grid games such as puzzles, shooters and classic arcades. This environment is usually addressed by non-deterministic learning algorithms such as Monte-Carlo Tree Search (MCTS) and Evolutionary Algorithms (EA) . Still as of yet, there has not been an approach able to consistently be successful on all games, showing that all the techniques used have their strengths and weaknesses. 
 
 ![GVGAI data](data/controllerOutcomeMaster - CLEAN.csv) - ![GVGAI Scores](plots/GVGP.Scores.pdf) 
+
+
+## Code
+
+- **./data/** Data (csv & rds files) used (Atari and GVGP scores)
+- **./plots/** Publication plots
+- **AIbenchmark_analysis.R** Complete functionality (ETL processes, IRT 2PL param estimation, generality estimation, publication plots, ...)
+- **RunExp_ItemTech.R** Run all the experiments
+
 
 ## Indicators
 
