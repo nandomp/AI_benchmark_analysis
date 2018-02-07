@@ -10,11 +10,15 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 
 ## Analysis
 
-### [DATA] Scores
+### [DATA] 
 
-![ALE Scores](data/atari_ale2.csv)  - ![ALE Scores](plots/Atari.Scores.pdf) 
+**The Arcade Learning Environment** ![](https://github.com/mgbellemare/Arcade-Learning-Environment)
 
-![GVGAI Scores](data/controllerOutcomeMaster - CLEAN.csv) - ![GVGAI Scores](plots/GVGP.Scores.pdf) 
+![ALE data](data/atari_ale2.csv)  - ![ALE Scores](plots/Atari.Scores.pdf) 
+
+**The General Video Game AI Competition** ![](http://www.gvgai.net/)
+
+![GVGAI data](data/controllerOutcomeMaster - CLEAN.csv) - ![GVGAI Scores](plots/GVGP.Scores.pdf) 
 
 ### [TECHNIQUES] Ability 
 
