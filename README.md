@@ -6,7 +6,7 @@ Whenever we confront AI systems with AI problems we are usually interested in th
 
 ## Analysis
 
-We analyse the behaviour of several learning techniques for two of the most popular general-purpose AI benchmarks in the recent years: the **Arcade Learning Environment**, based on the Atari 2600 games and the **General Video Game AI Competition**. We use Item Response Theory, and logistic models in particular, to create item characteristic curves to determine which games in the benchmark are more **difficult** but also more **discriminating**, as well as the **ability** or proficiency of each learning technique addresing the games. We complement them with a new metric of generality.
+We analyse the behaviour of several learning techniques for two of the most popular general-purpose AI benchmarks in the recent years: the **Arcade Learning Environment**, based on the Atari 2600 games and the **General Video Game AI Competition**. We use Item Response Theory, and logistic models in particular, to create item characteristic curves to determine which games in the benchmark are more **difficult** but also more **discriminating**, as well as the **ability** or proficiency of each learning technique addresing the games. These are complemented with a new metric of **generality**.
 
 ## Data
 
