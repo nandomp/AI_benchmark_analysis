@@ -42,10 +42,10 @@ Atari.cuts <-  plot.ACC.Empirical(abil.Atari, params.Atari, Atari.Variability, A
 Atari.cuts.filter <- plot.ACC.Empirical(abil.Atari, params.Atari, Atari.Variability, Atari.Variability, cuts = c(-11,-1, 0, 1, 10), minDiff = -6, maxDiff = 6, 
                    filename= "Atari.ACC.emp.cont.filter.var", cont = T, filterTechs = filter.Atari, variance = TRUE,legpos = "top", cols = 2)#c(0.85,0.85)
 # Windowed
-plot.ACC.Emp.window(abil.Atari, params.Atari, Atari.Variability, minDiff = -3, maxDiff = 5, 
-                    filename= "Atari.ACC.emp.window.all", window = 5)
-plot.ACC.Emp.window(abil.Atari, params.Atari, Atari.Variability, minDiff = -3, maxDiff = 5, 
-                    filename= "Atari.ACC.emp.window.filter.var", window = 5, filterTechs = filter.Atari, variance = T)
+# plot.ACC.Emp.window(abil.Atari, params.Atari, Atari.Variability, minDiff = -3, maxDiff = 5, 
+#                     filename= "Atari.ACC.emp.window.all", window = 5)
+# plot.ACC.Emp.window(abil.Atari, params.Atari, Atari.Variability, minDiff = -3, maxDiff = 5, 
+#                     filename= "Atari.ACC.emp.window.filter.var", window = 5, filterTechs = filter.Atari, variance = T)
 
 # Scatter plots (Slope/Generality vs. Regularity)
 genEmpACC(Atari.cuts, ResultsAtari, abil.Atari, filename="Atari.GenSlope",filter.Atari)
@@ -61,6 +61,9 @@ sapply(filter(params.Atari, Dffclt > -900),range)
 cor(ResultsAtari$MeanScore, ResultsAtari$abil)
 cor(ResultsAtari$var.Inv, ResultsAtari$abil)
 
+# IRT Params to markdown
+library(knitr)
+kable(params.Atari, format = "markdown", padding = 0)
 
 ##################################################################################################
 ############################################# GVGAI ##############################################
@@ -107,20 +110,19 @@ GVGP.cuts <-  plot.ACC.Empirical(abil.GVGP, params.GVGP, GVGP.Variability, GVGP.
                    cuts= c(-600,-1,1,2, 600), filename= "GVGAI.ACC.emp.cont", cont = T, legpos = "right")
 # Filtered (cont)
 plot.ACC.Empirical(abil.GVGP, params.GVGP, GVGP.Variability, GVGP.Variability,  minDiff = -6, maxDiff = 6,  cuts= c(-600,-1,1,2, 600), 
-                   filename= "GVGAI.ACC.emp.cont.filt.var", cont = T, filterTechs = filter.GVGP, variance = T, legpos = "none", cols = 2)# legpos = c(0.15,0.1)
+                   filename= "GVGAI.ACC.emp.cont.filt.var", cont = T, filterTechs = filter.GVGP, variance = T, legpos = "top", cols = 2)# legpos = c(0.15,0.1)
 
-plot.ACC.Empirical(abil.GVGP, params.GVGP, Results, minDiff = -6, maxDiff = 6,  groups = 4, 
-                   filename= "GVGAI.ACC.emp.cont.filt.var", cont = T, filterTechs = filter.GVGP, variance = T, legpos = "none", cols = 2)# legpos = c(0.15,0.1)
+#plot.ACC.Empirical(abil.GVGP, params.GVGP, GVGP.Variability, GVGP.Variability, minDiff = -6, maxDiff = 6,  groups = 4, 
+#                   filename= "GVGAI.ACC.emp.cont.filt.var", cont = T, filterTechs = filter.GVGP, variance = T, legpos = "none", cols = 2)# legpos = c(0.15,0.1)
 
 
 # Windowed (cont)
-plot.ACC.Emp.window(abil.GVGP, params.GVGP, GVGP.Variability, minDiff = -3, maxDiff = 0.1, filename= "GVGAI.ACC.emp.window.all", window = 40)
-plot.ACC.Emp.window(abil.GVGP, params.GVGP, GVGP.Variability, minDiff = -3, maxDiff = 0.1, 
-                    filename= "GVGAI.ACC.emp.window.filter", window = 40, filterTechs = filter.GVGP, variance = F)
-plot.ACC.Emp.window(abil.GVGP, params.GVGP, GVGP.Variability, minDiff = -3, maxDiff = 0.1, 
-                    filename= "GVGAI.ACC.emp.window.filter.var", window = 40, filterTechs = filter.GVGP, variance = T)
+# plot.ACC.Emp.window(abil.GVGP, params.GVGP, GVGP.Variability, minDiff = -3, maxDiff = 0.1, filename= "GVGAI.ACC.emp.window.all", window = 40)
+# plot.ACC.Emp.window(abil.GVGP, params.GVGP, GVGP.Variability, minDiff = -3, maxDiff = 0.1, 
+#                     filename= "GVGAI.ACC.emp.window.filter", window = 40, filterTechs = filter.GVGP, variance = F)
+# plot.ACC.Emp.window(abil.GVGP, params.GVGP, GVGP.Variability, minDiff = -3, maxDiff = 0.1, 
+#                     filename= "GVGAI.ACC.emp.window.filter.var", window = 40, filterTechs = filter.GVGP, variance = T)
 
-source("AIbenchmark_analysis.R")
 genEmpACC(GVGP.cuts, ResultsGVGP, abil.GVGP, filename = "GVGAI.GenSlope", filter.GVGP, ylimit=30)
 
 
@@ -139,3 +141,6 @@ sapply(filter(params.GVGP, Dffclt > -900),range)
 cor(ResultsGVGP$MeanScore, ResultsGVGP$abil)
 cor(ResultsGVGP$var.Inv, ResultsGVGP$abil)
 
+# IRT Params to markdown
+library(knitr)
+kable(params.GVGP, format = "markdown", padding = 0)

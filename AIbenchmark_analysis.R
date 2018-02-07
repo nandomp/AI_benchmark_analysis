@@ -53,9 +53,11 @@ source("color_palette.R")
 set.seed(288)
 
 # Read Data
-Atari <- read.csv("atari_ale2.csv")
+#Atari <- read.csv("atari_ale2.csv")
+Atari <- read.csv("ALE_data.csv")
 progress <- fromJSON("progressAtari.json")
-GVGP.results <- read.csv("controllerOutcomeMaster - CLEAN.csv", header= FALSE)
+#GVGP.results <- read.csv("controllerOutcomeMaster - CLEAN.csv", header= FALSE)
+GVGP.results <- read.csv("GVGAI_data", header= FALSE)
 
 
 ##############################################################################
