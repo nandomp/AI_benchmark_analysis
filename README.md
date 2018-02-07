@@ -3,8 +3,8 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 
 ## Code
 
-- **./Data/** Data (csv & rds files) used (Atari and GVGP scores)
-- **./Plots/** Publication plots
+- **./data/** Data (csv & rds files) used (Atari and GVGP scores)
+- **./plots/** Publication plots
 - **AIbenchmark_analysis.R** Complete functionality (ETL processes, IRT 2PL param estimation, generality estimation, publication plots, ...)
 - **RunExp_ItemTech.R** Run all the experiments
 
@@ -12,21 +12,21 @@ Analysing AI benchmark performance: generality, ability, difficulty and discrimi
 
 ### [DATA] Scores
 
-![Atari Scores](plots/Atari.Scores.pdf) 
+![ALE Scores](data/atari_ale2.csv)  - ![ALE Scores](plots/Atari.Scores.pdf) 
 
-![GVGP Scores](plots/GVGP.Scores.pdf) 
+![GVGAI Scores](data/controllerOutcomeMaster - CLEAN.csv) - ![GVGAI Scores](plots/GVGP.Scores.pdf) 
 
 ### [TECHNIQUES] Ability 
 
-![Atari AI techniques](plots/Atari.Ability.pdf)  
+![ALE AI techniques](plots/Atari.Ability.pdf)  
 
-![GVGP AI techniques](plots/GVGP.Ability.pdf) 
+![GVGAI AI techniques](plots/GVGP.Ability.pdf) 
 
 ### [TECHNIQUES]  Regularity
 
-![Atari AI techniques](plots/Atari.Generality.pdf)  
+![ALE AI techniques](plots/Atari.Generality.pdf)  
 
-![GVGP AI techniques](plots/GVGP.Generality.pdf) 
+![GVGAI AI techniques](plots/GVGP.Generality.pdf) 
 
 
 ### [ITEMS] IRT parameters: ALE (Atari 2600 Games)
