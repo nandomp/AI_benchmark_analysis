@@ -14,13 +14,13 @@ We analyse the behaviour of several learning techniques for two of the most popu
 
 One benchmark that has become particularly popular in the past years is the Arcade Learning Environment, a collection of Atari 2600 games that is usually tacked by reinforcement learning algorithms, search methods, planning or a combination, depending on the problem presentation. The popularity of this benchmark has increased significantly since *Mnih et al, 2015* introduced a combination of deep learning and Q-learning, known as DQN, which was able to perform better than humans for many of the games, where learning was just performed by observing the screen and receiving rewards (the score), without any other given representation or description of the game, just learning to play from scratch. 
 
-![ALE data](data/atari_ale2.csv)  - ![ALE Scores](plots/Atari.Scores.pdf) 
+![ALE data](data/ALE_data.csv)  - ![ALE Scores](plots/Atari.Scores.pdf) 
 
 **The General Video Game AI Competition**  [GVGAI](http://www.gvgai.net/)
 
 Another interesting initiative is the general video game AI (GVGAI) competition \cite{perez20162014}, a benchmark which comprises a large number of real-time 2D grid games such as puzzles, shooters and classic arcades. This environment is usually addressed by non-deterministic learning algorithms such as Monte-Carlo Tree Search (MCTS) and Evolutionary Algorithms (EA) . Still as of yet, there has not been an approach able to consistently be successful on all games, showing that all the techniques used have their strengths and weaknesses. 
 
-![GVGAI data](data/controllerOutcomeMaster - CLEAN.csv) - ![GVGAI Scores](plots/GVGP.Scores.pdf) 
+![GVGAI data](data/GVGAI_data.csv) - ![GVGAI Scores](plots/GVGP.Scores.pdf) 
 
 
 ## Code
