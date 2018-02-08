@@ -18,7 +18,7 @@ One benchmark that has become particularly popular in the past years is the Arca
 
 **The General Video Game AI Competition**  [GVGAI](http://www.gvgai.net/)
 
-Another interesting initiative is the general video game AI (GVGAI) competition \cite{perez20162014}, a benchmark which comprises a large number of real-time 2D grid games such as puzzles, shooters and classic arcades. This environment is usually addressed by non-deterministic learning algorithms such as Monte-Carlo Tree Search (MCTS) and Evolutionary Algorithms (EA) . Still as of yet, there has not been an approach able to consistently be successful on all games, showing that all the techniques used have their strengths and weaknesses. 
+Another interesting initiative is the general video game AI (GVGAI) competition, a benchmark which comprises a large number of real-time 2D grid games such as puzzles, shooters and classic arcades. This environment is usually addressed by non-deterministic learning algorithms such as Monte-Carlo Tree Search (MCTS) and Evolutionary Algorithms (EA) . Still as of yet, there has not been an approach able to consistently be successful on all games, showing that all the techniques used have their strengths and weaknesses. 
 
 ![GVGAI data](data/GVGAI_data.csv) - ![GVGAI Scores](plots/GVGP.Scores.pdf) 
 
